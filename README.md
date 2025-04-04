@@ -4,78 +4,77 @@ A web application for testing Model Context Protocol (MCP) servers before integr
 
 ## Features
 
-- Test MCP servers using different configuration formats
-- Support for JSON configuration and NPX command formats
-- Real-time test execution and monitoring
-- Clear display of test results and errors
-- Modern, responsive UI with Tailwind CSS
-- Documentation and examples included
+- Test MCP servers using JSON or NPX command formats
+- Real-time server response monitoring
+- Error detection and detailed feedback
+- User-friendly interface with example configurations
+- Support for multiple server configurations
 
-## Setup Instructions
+## Prerequisites
 
-### Prerequisites
+Before you begin, ensure you have the following installed:
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- [npm](https://www.npmjs.com/) (usually comes with Node.js)
 
-- Node.js v16 or higher
-- npm or yarn
-
-### Installation
+## Quick Start
 
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/mcp-tester.git
-   cd mcp-tester
-   ```
+```bash
+git clone https://github.com/sujal862/MCPTester
+cd MCPTESTER
+```
 
-2. Install backend dependencies:
-   ```bash
-   cd backend
-   npm install
-   ```
+2. Install dependencies for both frontend and backend:
+```bash
+# Install backend dependencies
+cd backend
+npm install
 
-3. Install frontend dependencies:
-   ```bash
-   cd ../frontend
-   npm install
-   ```
+# Install frontend dependencies
+cd ../frontend
+npm install
+```
 
-### Development
+3. Start the application:
 
-1. Start the backend server:
-   ```bash
-   cd backend
-   npm run dev
-   ```
+```bash
+# Start the backend server (in the backend directory)
+cd ../backend
+npm start
 
-2. Start the frontend development server:
-   ```bash
-   cd frontend
-   npm run dev
-   ```
+# In a new terminal, start the frontend server (in the frontend directory)
+cd ../frontend
+npm run dev
+```
 
-3. Open your browser and navigate to `http://localhost:5173`
+4. Open your browser and navigate to the URL shown in the terminal (usually `http://localhost:5173` or `http://localhost:5174`)
 
-## Usage
+## Detailed Usage Guide
 
-1. Enter your MCP server configuration in either JSON format or as an NPX command
-2. Click "Test MCP Server" to run the test
-3. View the test results, including server status and responses
+### Testing Your MCP Server
 
-### Supported Configuration Formats
+1. **Launch the Application**
+   - Ensure both backend and frontend servers are running
+   - Open the application in your browser
+   - You'll see a clean interface with a configuration input area
 
-#### JSON Configuration
+2. **Enter Your Configuration**
+   - Click the "Show Examples" button to view sample configurations
+   - Choose either JSON or NPX command format
+   - Use the "Copy to Input" button to quickly use an example
+   - Modify the configuration with your server details and API key
 
+3. **JSON Configuration Format**
 ```json
 {
   "mcpServers": {
-    "server-sequential-thinking": {
-      "command": "cmd",
+    "your-server-name": {
+      "command": "npx",
       "args": [
-        "/c",
-        "npx",
         "-y",
         "@smithery/cli@latest",
         "run",
-        "@smithery-ai/server-sequential-thinking",
+        "@your-org/your-mcp-server",
         "--key",
         "your-api-key"
       ]
@@ -84,29 +83,55 @@ A web application for testing Model Context Protocol (MCP) servers before integr
 }
 ```
 
-#### NPX Command
-
+4. **NPX Command Format**
 ```bash
-npx -y @smithery/cli@latest install @smithery-ai/server-sequential-thinking --client claude --key your-api-key
+npx -y @smithery/cli@latest install @your-org/your-mcp-server --client claude --key your-api-key
 ```
 
-## Technical Details
+5. **Run the Test**
+   - Click the "Test MCP Server" button
+   - The application will:
+     - Validate your configuration
+     - Connect to your MCP server
+     - Display real-time server responses
+     - Show any errors or success messages
 
-This application follows a client-server architecture:
+6. **Understanding Results**
+   - Green checkmark: Test passed successfully
+   - Red X: Test failed (with error details)
+   - Connection status is shown in real-time
+   - Error messages are clearly displayed if any issues occur
 
-- **Frontend**: React application built with Vite and Tailwind CSS
-- **Backend**: Node.js/Express server that handles:
-  - Configuration parsing and validation
-  - MCP server execution
-  - Test result formatting and delivery
+## Troubleshooting
+
+### Common Issues
+
+1. **Connection Errors**
+   - Verify your API key is correct
+   - Check if the server package name is correct
+   - Ensure you have internet connectivity
+
+2. **Server Not Starting**
+   - Make sure both backend and frontend servers are running
+   - Check terminal outputs for any error messages
+   - Verify all dependencies are installed correctly
+
+3. **Invalid Configuration**
+   - Compare your configuration with the examples
+   - Ensure JSON format is valid
+   - Check for proper command syntax in NPX format
+
+### Getting Help
+
+If you encounter any issues:
+1. Check the terminal output for error messages
+2. Verify your configuration matches the examples
+3. Ensure all prerequisites are installed correctly
+4. Check the [Smithery CLI documentation](https://smithery.ai/docs) for more details
 
 ## Contributing
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 

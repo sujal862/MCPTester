@@ -7,7 +7,7 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Helper function to analyze server output for errors
+// function to analyze server output for errors
 function analyzeServerOutput(output) {
   let hasError = false;
   let errorMessage = null;
@@ -17,7 +17,7 @@ function analyzeServerOutput(output) {
   for (const item of output) {
     const data = item.data.toLowerCase();
     
-    // checking some -> common error patterns
+    // checking common error patterns
     if (data.includes('failed to fetch config') || 
         data.includes('fatal error') ||
         data.includes('server not found') ||
@@ -100,13 +100,13 @@ function parseConfiguration(input) {
         throw new Error('Invalid JSON format: ' + e.message);
       }
     }
-    // Check if input is an NPX command
+    // Check if input is an npx command
     else if (input.includes('npx')) {
       const parts = input.split(' ').filter(p => p.trim().length > 0);
       
-      // Validate basic NPX command structure
+      // Validate normal npx command structure
       if (!parts.includes('npx') || !parts.includes('@smithery/cli@latest')) {
-        throw new Error('Invalid NPX command: Must use @smithery/cli');
+        throw new Error('Invalid npx command: Must use @smithery/cli');
       }
 
       // Find server package and key
@@ -154,7 +154,7 @@ function parseConfiguration(input) {
   }
 }
 
-// Test MCP server endpoint
+// Test MCP server route
 app.post('/api/test-mcp', async (req, res) => {
   try {
     const { config } = req.body;
