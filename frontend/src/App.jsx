@@ -32,7 +32,7 @@ function App() {
     setResults(null);
 
     try {
-      const response = await axios.post('https://mcptester.onrender.com/api/test-mcp', {
+      const response = await axios.post('http://localhost:5000/api/test-mcp', {
         config
       });
       setResults(response.data);

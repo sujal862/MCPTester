@@ -2,6 +2,10 @@
 
 A web application for testing Model Context Protocol (MCP) servers before integration. This tool supports both JSON configuration and NPX command formats.
 
+## ⚠️ Important: Local Development Only
+
+Due to process execution restrictions on cloud platforms (Vercel, Netlify, Heroku), this application must be run locally. Cloud platforms don't support spawning processes or accessing Node.js CLI tools required for MCP server testing. Please follow the setup instructions below to run the application on your local machine.
+
 ## Features
 
 - Test MCP servers using JSON or NPX command formats
@@ -20,7 +24,7 @@ Before you begin, ensure you have the following installed:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/sujal862/MCPTester
+git clone https://github.com/sujal862/MCPTester.git
 cd MCPTESTER
 ```
 

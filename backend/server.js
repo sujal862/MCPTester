@@ -1,11 +1,13 @@
 const express = require('express');
 const cors = require('cors');
+const morgan = require('morgan');
 const { spawn } = require('child_process');
 const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+app.use(morgan('dev'));
 
 // function to analyze server output for errors
 function analyzeServerOutput(output) {
